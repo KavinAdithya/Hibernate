@@ -144,7 +144,7 @@ public class MappingRelationTheory {
 		list1.add(s2);
 		l1.setStud(list1);
 		List<Student> list2=new ArrayList<>();
-		list2.add(s1);
+		list2.add(s2);
 		list2.add(s4);
 		l2.setStud(list2);
 ////		List<Student> list3=new ArrayList<>();
