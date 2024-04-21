@@ -1,10 +1,20 @@
 package com.techcrack.Hibernate.Hibernate;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
+@SuppressWarnings("unused")
 @Entity
-public class Student {
+public class Student { 
+	@Id
+	private int id;
+	private String name;
+	private int age;
+	//@OneToOne
+	//private Laptop lap;
 	
 	/*
 	 * decalring object state to store 
@@ -13,23 +23,29 @@ public class Student {
 	 * which means cannot be access form other classes directly
 	 * 
 	 */
-	@Id
-	private int id;
-	private String name;
-	private int age;
-
+	public Student(){
+		super();
 	
+	}
+
 	/*
 	 * parameterized Constructor 
 	 * On instantiating this class
 	 * Mandatory to provide instance state's
-	 */
+	 */ 
 	public Student(String name,int age,int id) {
 		this.name=name;
 		this.age=age;
 		this.id=id;
 	}
-	
+//	public Laptop getLap() {
+//		return lap;
+//	}
+
+//	public void setLap(Laptop lap) {
+//		this.lap = lap;
+//	}
+
 	/*
 	 * Beans For Accesing instance state indirectly which is encaapsulated from other
 	 * classes 
@@ -52,4 +68,11 @@ public class Student {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+		
+	@Override
+	public String toString() {
+		return "["+name+" "+age+" "+id+"]";
+	}
+
 }

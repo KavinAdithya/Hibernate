@@ -16,10 +16,13 @@ public class App
     }
     
     public static void  hibernate() {
+    	Name name=new Name();
+    	name.setLname("Dharani");
+    	name.setSname("Kavin");
+    	name.setMname("Adithya");
+    	Student st=new Student();
     	
-    	Student st=new Student("DhaRKaVINani",19,43);
-    	
- 
+    	Student s=null;
     	Configuration con=new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student.class);
     	
     	
@@ -27,12 +30,14 @@ public class App
     	
     	Session session=sf.openSession();
     	
+    	
     	Transaction tx=session.beginTransaction();
-    	
-    	
     	session.persist(st);
     	
+    	 s=session.get(Student.class,3);
+    	    
     	tx.commit();
+    	System.out.println(s);
     	
     }
 }
