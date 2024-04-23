@@ -1,6 +1,7 @@
 package com.techcrack.Hibernate.Hibernate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
@@ -27,7 +28,7 @@ public class Laptop {
 //	private Student stud;
 //	@ManyToOne
 //	private Student stud;
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Student> stud=new ArrayList<>();
 	
 	public List<Student> getStud() {
