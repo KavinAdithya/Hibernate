@@ -1,6 +1,6 @@
 package com.techcrack.Hibernate.Hibernate;
 
-import jakarta.persistence.Embeddable;
+import javax.persistence.Embeddable;
 
 @Embeddable
 public class Name {
