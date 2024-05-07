@@ -8,6 +8,10 @@ public class Department {
 	@Id
 	private int id;
 	private String name;
+	@Override
+	public String toString() {
+		return "[id=" + id + ", name=" + name + "]";
+	}
 	public int getId() {
 		return id;
 	}

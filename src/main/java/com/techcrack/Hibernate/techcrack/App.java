@@ -29,46 +29,46 @@ public class App {
     	SessionFactory sf=config.buildSessionFactory();
     	
     	Session session=sf.openSession();
-    	
-    	Professor wif=new Professor();
-    	
-    	wif.setName("Vijay");
-    	wif.setAge(54);
-    	wif.setId(488);
-    	wif.setSpouse("Samantha");
-    	wif.setDegree("BE.ME");
-    	wif.setChild("Joseph Vijay");
-    	wif.setPhoneNumber("7456981527");
-    	wif.setEmail("vijaytvk@gmail.com");
-    	wif.setFather("Kuruvi");
-    	
+//    	
+//    	Professor wif=new Professor();
+//    	
+//    	wif.setName("Vijay");
+//    	wif.setAge(54);
+//    	wif.setId(488);
+//    	wif.setSpouse("Samantha");
+//    	wif.setDegree("BE.ME");
+//    	wif.setChild("Joseph Vijay");
+//    	wif.setPhoneNumber("7456981527");
+//    	wif.setEmail("vijaytvk@gmail.com");
+//    	wif.setFather("Kuruvi");
+//    	
     	Transaction trans=session.beginTransaction();
-    	
-    	Name name=new Name();
-    	name.setLeftName("Computer");
-    	name.setMiddleName("Science");
-    	name.setRightName("Engineering");
-    	
-    	Department depart=new Department();
-    	depart.setId(1);
-    	depart.setName(name);
-    	
-    	Name ece=new Name();
-    	ece.setLeftName("Electronics");
-    	ece.setMiddleName(" And Communication");
-    	ece.setRightName("Enginaeering");
-    	
-    	Department d2=new Department();
-    	d2.setId(2);
-    	d2.setName(ece);
-    	
-    	List<Department> list=new ArrayList<>();
-    	list.add(depart);
-    	list.add(d2);
-    	//session.persist(d2);
-    	//session.persist(depart);
-    	wif.setDepart_id(list);
-    	session.persist(wif);
+//    	
+//    	Name name=new Name();
+//    	name.setLeftName("Computer");
+//    	name.setMiddleName("Science");
+//    	name.setRightName("Engineering");
+//    	
+//    	Department depart=new Department();
+//    	depart.setId(1);
+//    	depart.setName(name);
+//    	
+//    	Name ece=new Name();
+//    	ece.setLeftName("Electronics");
+//    	ece.setMiddleName(" And Communication");
+//    	ece.setRightName("Enginaeering");
+//    	
+//    	Department d2=new Department();
+//    	d2.setId(2);
+//    	d2.setName(ece);
+//    	
+//    	List<Department> list=new ArrayList<>();
+//    	list.add(depart);
+//    	list.add(d2);
+//    	//session.persist(d2);
+//    	//session.persist(depart);
+//    	wif.setDepart_id(list);
+//    	session.persist(wif);
     	//session.persist(wif);
     	//System.out.println(session.get(Professor.class, 19));
     	
@@ -82,6 +82,21 @@ public class App {
 //    	Professor saranya=session.get(Professor.class,99);
 //    	
 //    	session.delete(saranya);
+    	
+    	eagerAndLazy(session);
     	trans.commit();
+    }
+    
+    //Eager And Lazy concept
+    private static void eagerAndLazy(Session session) {
+    	Professor teach=session.get(Professor.class,43);
+    	
+    	List<Department> lap=teach.getDepart_id();
+    	
+    	for(Department d:lap) {
+    		System.out.println(d);
+    	}
+    	
+    	
     }
 }

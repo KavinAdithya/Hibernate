@@ -2,6 +2,7 @@ package com.techcrack.Hibernate.techcrack;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
@@ -22,7 +23,7 @@ public class Professor {
 	private String child;
 	private String email;
 	private String phoneNumber;
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Department> depart_id;
 	
 	//Department ID
