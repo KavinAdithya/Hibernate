@@ -1,21 +1,36 @@
 package com.techcrack.Hibernate.techcrack;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Transient;
+import javax.persistence.Cacheable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import java.util.List;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+//import jakarta.persistence.Cacheable;
+//import jakarta.persistence.Column;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.FetchType;
+//import jakarta.persistence.Id;
+//import jakarta.persistence.ManyToMany;
+//import jakarta.persistence.OneToMany;
+//import jakarta.persistence.Transient;
+
 @Entity
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
 public class Professor {
 	@Id
 	private int id;
 	private String father;
-	@Column(name="Full-Name")
-	private String name;
+//	@Column(name="Full-Name")
+//	private String name;
 //	@Transient
 	private String degree;
 	private int age;
@@ -42,13 +57,13 @@ public class Professor {
 		this.id = id;
 	}
 	
-	//Name
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+//	//Name
+//	public String getName() {
+//		return name;
+//	}
+//	public void setName(String name) {
+//		this.name = name;
+//	}
 	
 	//Qualification
 	public String getDegree() {
@@ -101,7 +116,7 @@ public class Professor {
 	
 	@Override
 	public String toString() {
-		return "[id=" + id + ", name=" + name + ", degree=" + degree + ", age=" + age + ", spouse=" + spouse
+		return "[id=" + id + ",  degree=" + degree + ", age=" + age + ", spouse=" + spouse
 				+ ", child=" + child + ", email=" + email + ", phoneNumber=" + phoneNumber + "]";
 	}
 	

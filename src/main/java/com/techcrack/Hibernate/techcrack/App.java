@@ -37,12 +37,19 @@ public class App {
     	
     	//Eager
     	//eagerAndLazy(session);
+    	
+    	//first level caching
+    	//firstLevelCaching(session);
+    	
+    	//Second level caching
+    	Session s2=sf.openSession();
+    	secondLevelCaching(session,s2);
     	trans.commit();
     }
     
     //Eager And Lazy concept
     private static void eagerAndLazy(Session session) {
-    	Professor teach=session.get(Professor.class,43);
+    	Professor teach=(Professor)session.get(Professor.class,43);
     	
     	List<Department> lap=teach.getDepart_id();
     	
@@ -52,13 +59,24 @@ public class App {
     	
     }
     
+    //first level caching defaultly hibernate wil provide this feature
+    private static void firstLevelCaching(Session session) {
+    	Professor p1=(Professor)session.get(Professor.class,43);
+    	Professor p2=(Professor)session.get(Professor.class,43);
+    }
+    
+    //Second level caching 
+    private static void secondLevelCaching(Session session,Session s2) {
+    		Professor p1=(Professor)session.get(Professor.class, 43);
+    		Professor p2=(Professor)s2.get(Professor.class,43);
+    }
     
     //Method whic is used to insert data on database both mapping relationship[ as well as
     private static void dataInsert(Session session) {
     	
     	Professor wif=new Professor();
     	
-    	wif.setName("Vijay");
+  
     	wif.setAge(54);
     	wif.setId(488);
     	wif.setSpouse("Samantha");
@@ -98,13 +116,13 @@ public class App {
     	session.persist(wif);
     	System.out.println(session.get(Professor.class, 19));
     	
-    	Professor ramya=session.get(Professor.class,1);
+    	Professor ramya=(Professor)session.get(Professor.class,1);
     	
     	ramya.setFather("John");
     	ramya.setDegree("BE.ME");
     	session.update(ramya);
     	
-    	Professor saranya=session.get(Professor.class,99);
+    	Professor saranya=(Professor)session.get(Professor.class,99);
     	
     	session.delete(saranya);
     	

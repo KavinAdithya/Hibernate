@@ -1,9 +1,17 @@
 package com.techcrack.Hibernate.Hibernate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import javax.persistence.Cacheable;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
 public class Department {
 	@Id
 	private int id;

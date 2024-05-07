@@ -34,7 +34,7 @@ public class App
     	Transaction tx=session.beginTransaction();
     	session.persist(st);
     	
-    	 s=session.get(Student.class,3);
+    	 s=(Student)session.get(Student.class,3);
     	    
     	tx.commit();
     	System.out.println(s);
