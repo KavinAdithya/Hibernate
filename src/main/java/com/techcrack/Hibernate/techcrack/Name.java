@@ -1,7 +1,7 @@
 package com.techcrack.Hibernate.techcrack;
 
-import javax.persistence.Embeddable;
-//import jakarta.persistence.Embeddable;
+//import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 
 @Embeddable

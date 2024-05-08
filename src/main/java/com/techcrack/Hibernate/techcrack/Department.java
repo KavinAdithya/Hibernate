@@ -1,9 +1,9 @@
 package com.techcrack.Hibernate.techcrack;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.Id;
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 
 @Entity

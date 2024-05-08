@@ -2,6 +2,8 @@ package com.techcrack.Hibernate.techcrack;
 //Classes
 import org.hibernate.cfg.Configuration;
 
+import jakarta.persistence.Query;
+
 import java.util.List;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
+
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -43,9 +46,35 @@ public class App {
     	
     	//Second level caching
     	Session s2=sf.openSession();
-    	secondLevelCaching(session,s2);
+    	//secondLevelCaching(session,s2);
+    	
+    	//Query Second level caching
+    	//querySecondLevel(session,s2);
     	trans.commit();
     }
+//    
+//    //Query Second level caching
+//    private static void querySecondLevel(Session s1,Session s2) {
+//    	Query q1=(Query) s1.createQuery("from Professor where id=4");
+//    	q1.setCacheable(true);
+//    	
+//    	Professor p1=(Professor)((org.hibernate.query.Query) q1).uniqueResult();
+//    	Query q2=(Query) s2.createQuery("from Professor where id=4");
+//    	q2.setCacheable(true);
+//    	
+//    	Professor p2=(Professor)q2.uniqueResult();
+//    	
+//    	System.out.println(p1);
+//    	System.out.println(p2);
+//    	
+//    	for(Department l:p1.getDepart_id()) {
+//    		System.out.println(l);
+//    	}
+//    	
+//    	for(Department d:p2.getDepart_id()) {
+//    		System.out.println(d);
+//    	}
+//    }
     
     //Eager And Lazy concept
     private static void eagerAndLazy(Session session) {
@@ -61,14 +90,34 @@ public class App {
     
     //first level caching defaultly hibernate wil provide this feature
     private static void firstLevelCaching(Session session) {
-    	Professor p1=(Professor)session.get(Professor.class,43);
+    	Professor p1=(Professor)session.get(Professor.class,4);
     	Professor p2=(Professor)session.get(Professor.class,43);
+    	System.out.println(p1);
+    	System.out.println(p2);
+    	
+    	for(Department l:p1.getDepart_id()) {
+    		System.out.println(l);
+    	}
+    	
+    	for(Department d:p2.getDepart_id()) {
+    		System.out.println(d);
+    	}
     }
     
     //Second level caching 
     private static void secondLevelCaching(Session session,Session s2) {
     		Professor p1=(Professor)session.get(Professor.class, 43);
-    		Professor p2=(Professor)s2.get(Professor.class,43);
+    		Professor p2=(Professor)s2.get(Professor.class,4);
+    		System.out.println(p1);
+        	System.out.println(p2);
+        	
+        	for(Department l:p1.getDepart_id()) {
+        		System.out.println(l);
+        	}
+        	
+        	for(Department d:p2.getDepart_id()) {
+        		System.out.println(d);
+        	}
     }
     
     //Method whic is used to insert data on database both mapping relationship[ as well as
