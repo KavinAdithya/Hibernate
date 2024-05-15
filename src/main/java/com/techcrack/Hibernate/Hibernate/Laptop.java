@@ -30,14 +30,16 @@ public class Laptop {
 //	@ManyToOne
 //	private Student stud;
 	@ManyToMany(fetch=FetchType.EAGER)
-	private List<Student> stud=new ArrayList<>();
+	//private List<Student> stud=new ArrayList<>();
+//	
+//	public List<Student> getStud() {
+//		return stud;
+//	}
+//	public void setStud(List<Student> stud) {
+//		this.stud = stud;
+//	}
 	
-	public List<Student> getStud() {
-		return stud;
-	}
-	public void setStud(List<Student> stud) {
-		this.stud = stud;
-	}
+
 	public int getId() {
 		return id;
 	}
