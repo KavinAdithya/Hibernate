@@ -16,7 +16,8 @@ import org.hibernate.service.ServiceRegistry;
 public class App 
 {
     public static void main( String[] args ){
-    	mappingRelationShip();
+    	//mappingRelationShip();
+		oneToOne();
     }
     
     public static void  hibernate() {
@@ -65,12 +66,12 @@ public class App
     	Laptop laptop=new Laptop();
     	laptop.setId(12);
     	laptop.setName("Anbu");
-    	session.persist(laptop);
+    	//session.persist(laptop);
     	People people=new People();
     	
     	people.setLaptop(laptop);
     	people.setName("Techno");
-    	people.setPeopleId(8);
+    	people.setPeopleId(89);
     	
     	session.persist(people);
     	
